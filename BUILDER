@@ -1,0 +1,9 @@
+## In tree
+
+//win_toolchain/package_from_installed.py
+//autoninja
+
+## Out of tree
+
+//vs_toolchain.py
+//install-build-deps.sh
