@@ -5,21 +5,10 @@
 
 base_dir=$(dirname "$0")
 
+export DEPOT_TOOLS_UPDATE=0
+
 if [[ "#grep#fetch#cleanup#diff#help#getdep#root#setdep#recurse#--help#" != *"#$1#"* ]]; then
-  # Shall skip authomatic update?
-  if [[ $DEPOT_TOOLS_UPDATE != 0 ]]; then
-    "$base_dir"/update_depot_tools "$@"
-    case $? in
-      123)
-        # msys environment was upgraded, need to quit.
-        exit 0
-        ;;
-      0)
-        ;;
-      *)
-        exit $?
-    esac
-  fi
+    printf "NOTE: Not updating depot_tools."
 fi
 
 # Ensure that "depot_tools" is somewhere in PATH so this tool can be used

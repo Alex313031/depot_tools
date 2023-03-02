@@ -1,9 +1,18 @@
-## In tree
+## In tree (rebase from here)
 
 //win_toolchain/package_from_installed.py
-//autoninja
+//autoninjagsu
+//gclient
+//gclient.bat
+//repo
+//gsutil.py
+//gsutil.py.bat
 
-## Out of tree
+## DELETE
+-//update_depot_tools
+-//update_depot_tools.bat
+
+## Out of tree (rebase from Chromium repo)
 
 //vs_toolchain.py
 //install-build-deps.sh

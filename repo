@@ -22,26 +22,6 @@ DEPOT_TOOLS_DIR = Path(__file__).resolve().parent
 UPDATE_DEPOT_TOOLS = DEPOT_TOOLS_DIR / 'update_depot_tools'
 REPO = DEPOT_TOOLS_DIR / 'repo_launcher'
 
-
-def _UpdateDepotTools():
-  """Help CrOS users keep their depot_tools checkouts up-to-date."""
-  if os.getenv('DEPOT_TOOLS_UPDATE') == '0':
-    return
-
-  # We don't update the copy that's part of the CrOS repo client checkout.
-  path = DEPOT_TOOLS_DIR
-  while path != path.parent:
-    if (path / '.repo').is_dir() and (path / 'chromite').is_dir():
-      return
-    path = path.parent
-
-  if UPDATE_DEPOT_TOOLS.exists():
-    subprocess.run([UPDATE_DEPOT_TOOLS], check=True)
-  else:
-    print(f'warning: {UPDATE_DEPOT_TOOLS} does not exist; export '
-          'DEPOT_TOOLS_UPDATE=0 to disable.', file=sys.stderr)
-
-
 def main(argv):
   # This is a bit hacky, but should be "good enough".  If repo itself gains
   # support for sync hooks, we could switch to that.
